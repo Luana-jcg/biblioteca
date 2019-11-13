@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Out-2019 às 23:58
+-- Tempo de geração: 13-Nov-2019 às 01:37
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.9
 
@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 -- Banco de dados: `biblioteca`
 --
 
--- --------------------------------------------------------
+CREATE DATABASE biblioteca;
 
 --
 -- Estrutura da tabela `autor`
@@ -151,6 +151,16 @@ ALTER TABLE `livro`
   ADD CONSTRAINT `autor_id` FOREIGN KEY (`autor_id`) REFERENCES `autor` (`id`),
   ADD CONSTRAINT `editora_id` FOREIGN KEY (`editora_id`) REFERENCES `editora` (`id`);
 COMMIT;
+
+SELECT nome FROM editora WHERE nome REGEXP '[y]$';
+
+SELECT nome FROM livro WHERE nome REGEXP '^[US]';
+
+SELECT nome FROM autor WHERE sobrenome REGEXP '^[S]' OR '^[So]';
+
+SELECT nome, isbn FROM livro WHERE isbn REGEXP '^123';
+
+SELECT nome FROM autor WHERE nome NOT REGEXP '[lm]$';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
